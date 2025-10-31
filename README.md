@@ -12,11 +12,39 @@ Write a C program to print even numbers ranging from M to N (including M and N v
 7.	Continue the loop until you have iterated through all numbers from M to N.
 
 ## PROGRAM:
+```
+#include <stdio.h>
 
+int main() {
+    int M, N;
+
+    // Input values
+    printf("Enter the starting number (M): ");
+    scanf("%d", &M);
+
+    printf("Enter the ending number (N): ");
+    scanf("%d", &N);
+
+    printf("Even numbers from %d to %d are:\n", M, N);
+
+    // Ensure starting from an even number
+    if (M % 2 != 0)
+        M++;  // If M is odd, move to next even number
+
+    // Loop through and print even numbers
+    for (int i = M; i <= N; i += 2) {
+        printf("%d ", i);
+    }
+
+    printf("\n");
+    return 0;
+}
+
+```
 ## OUTPUT:
 
 
-
+![alt text](c1.png)
 
 
 
@@ -45,11 +73,29 @@ Write a C program to print the given triangular pattern using loop.
 5.	Continue the loop until you have printed the entire triangular pattern.
 
 ## PROGRAM:
+```
+#include <stdio.h>
 
+int main() {
+    int n;
 
+    printf("Enter number of rows: ");
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {      // outer loop → number of rows
+        for (int j = 1; j <= i; j++) {  // inner loop → print '*' in each row
+            printf("* ");
+        }
+        printf("\n");  // move to next line
+    }
+
+    return 0;
+}
+
+```
 ## OUTPUT:
 
-
+![alt text](c2.png)
 
 
 
@@ -74,12 +120,48 @@ Write a C program to perform addition and subtraction of two numbers using funct
 4.	Call the addition and subtraction functions, passing the two numbers as arguments.
 
 ## PROGRAM:
+```
+#include <stdio.h>
+
+// Function declarations
+void add(int a, int b);
+void subtract(int a, int b);
+
+int main() {
+    int num1, num2;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &num1, &num2);
+
+    // Function calls
+    add(num1, num2);
+    subtract(num1, num2);
+
+    return 0;
+}
+
+// Function definitions
+
+// Performs addition (with argument, no return)
+void add(int a, int b) {
+    int sum = a + b;
+    printf("Sum = %d\n", sum);
+}
+
+
+// Performs subtraction (with argument, no return)
+void subtract(int a, int b) {
+    int diff = a - b;
+    printf("Difference = %d\n", diff);
+}
+
+```
 
 
 ## OUTPUT:
 
 
-
+![alt text](c3.png)
 
 
 
@@ -106,11 +188,34 @@ Write a c program to find the sum of odd digits using for loop
 6.	Print the sum of odd digits.
 
 ## PROGRAM:
+```
+#include <stdio.h>
+
+int main() {
+    int num, digit, sum = 0;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Use a for loop to extract digits and find sum of odd ones
+    for (; num > 0; num = num / 10) {
+        digit = num % 10;          // extract last digit
+        if (digit % 2 != 0) {      // check if odd
+            sum += digit;
+        }
+    }
+
+    printf("Sum of odd digits = %d\n", sum);
+
+    return 0;
+}
+
+```
 
 
 ## OUTPUT:
 
-
+![alt text](c4.png)
 
 
 ## RESULT:
@@ -136,9 +241,43 @@ d.	After the loop, print the factorial value.
 5.	End
 
 ## PROGRAM:
+```
+#include <stdio.h>
+
+// Function declaration
+int factorial(int n);
+
+int main() {
+    int num, result;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    if (num < 0)
+        printf("Factorial is not defined for negative numbers.\n");
+    else {
+        result = factorial(num);  // Function call
+        printf("Factorial of %d = %d\n", num, result);
+    }
+
+    return 0;
+}
+
+// Function definition
+int factorial(int n) {
+    int fact = 1;
+
+    for (int i = 1; i <= n; i++) {
+        fact = fact * i;
+    }
+
+    return fact;   // return the result to main()
+}
+```
 
 
 ## OUTPUT:
+![alt text](c5.png)
 
 ## RESULT:
 The program correctly computes the factorial of a given number using a separate function and displays the result.
